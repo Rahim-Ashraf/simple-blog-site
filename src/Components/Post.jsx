@@ -1,6 +1,6 @@
 import { CiBookmark } from "react-icons/ci";
 
-const Post = ({ post, handleSpenTime}) => {
+const Post = ({ post, handleSpenTime, handleBookmarkClick }) => {
     const { image, author_image, author_name, post_date, read_time, title } = post;
 
     return (
@@ -21,11 +21,11 @@ const Post = ({ post, handleSpenTime}) => {
                     </div>
                     <div className="flex gap-2 items-center">
                         <p>{read_time}</p>
-                        <CiBookmark />
+                        <button onClick={() => handleBookmarkClick(title)}><CiBookmark /></button>
                     </div>
                 </div>
                 <h1 className="text-3xl font-bold">{title}</h1>
-                <button onClick={()=>{handleSpenTime(read_time)}} className="text-blue-800 font-semibold my-2">Mark as Read</button>
+                <button onClick={() => { handleSpenTime(read_time) }} className="text-blue-800 font-semibold my-2">Mark as Read</button>
             </div>
         </>
     )

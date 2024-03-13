@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Post from "./Post";
 
 
-const Posts = ({handleSpenTime}) => {
+const Posts = ({handleSpenTime, handleBookmarkClick}) => {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         fetch('fakeData.json')
@@ -12,9 +12,9 @@ const Posts = ({handleSpenTime}) => {
 
     return (
         <>
-        <div className="w-2/3">
+        <div>
         {posts.length}
-        {posts.map(post => <Post key={post.title} post={post} handleSpenTime={handleSpenTime} />)}
+        {posts.map(post => <Post key={post.title} post={post} handleSpenTime={handleSpenTime} handleBookmarkClick={handleBookmarkClick} />)}
         </div>
         </>
     )

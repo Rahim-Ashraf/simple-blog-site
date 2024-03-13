@@ -7,9 +7,15 @@ import { useState } from 'react'
 
 function App() {
   const [spentTime, setSpentTime] = useState(0)
+  const [bookmarkes, setBookmarks] = useState([])
   const handleSpenTime = (read_time) => {
     const parseIntReadTime = parseInt(read_time)
     setSpentTime(spentTime + parseIntReadTime)
+  }
+  const handleBookmarkClick = (tittle)=>{
+    if(!bookmarkes.includes(tittle)){
+      setBookmarks([...bookmarkes, tittle])
+    }
   }
 
   return (
@@ -17,10 +23,12 @@ function App() {
       <div className='max-w-[1280px] mx-auto'>
         <Header />
         <div className='flex gap-4'>
-          <Posts handleSpenTime={handleSpenTime} />
-          <div>
-            <SpendTime spentTime={spentTime}/>
-            <BookMarks />
+          <div className="w-2/3">
+            <Posts handleSpenTime={handleSpenTime} handleBookmarkClick={handleBookmarkClick} />
+          </div>
+          <div className='w-1/33'>
+            <SpendTime spentTime={spentTime} />
+            <BookMarks bookmarkes={bookmarkes} />
           </div>
         </div>
       </div>
